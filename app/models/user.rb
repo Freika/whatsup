@@ -5,5 +5,7 @@ class User < ApplicationRecord
   has_many :memberships
   has_many :teams, through: :memberships
 
+  has_many :tasks
+
   validates :username, presence: true, uniqueness: true
 end

@@ -1,6 +1,5 @@
 # TODO
 
-- User belongs to Team
 - User creates Tasks in the beginning of day
 - Tasks are belongs to Report
 - User can choose Team to send his Report
@@ -14,3 +13,7 @@
 - Report must be sent to Newsletter
 - All users are subscribed to Newsletter
 - Newsletter can be updated and re-sent with tag "Update"
+
+# DONE
+
+- User belongs to Team
