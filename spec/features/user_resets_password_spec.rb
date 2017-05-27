@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 feature 'User resets a password' do
   scenario 'user enters a valid email' do
     user = create :user

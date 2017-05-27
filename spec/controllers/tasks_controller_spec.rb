@@ -36,7 +36,7 @@ describe TasksController, type: :controller do
 
   describe "GET #new" do
     it "returns a success response" do
-      sign_in :user, user
+      sign_in(user, scope: :user)
       get :new
       expect(response).to be_success
     end
