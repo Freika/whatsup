@@ -9,6 +9,10 @@
   </head>
 
   <body>
-    <%= yield %>
+    <%= render 'shared/navbar' %>
+    <div class="container">
+      <%= yield %>
+      <%= switch_user_select if Rails.env.development? %>
+    </div>
   </body>
 </html>
