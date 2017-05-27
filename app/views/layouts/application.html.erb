@@ -10,8 +10,10 @@
 
   <body>
     <%= render 'shared/navbar' %>
-    <div class="container">
-      <%= render partial: 'shared/flash_messages', flash: flash %>
+    <div class='container'>
+      <div class='row'>
+        <%= render partial: 'shared/flash_messages', flash: flash %>
+      </div>
       <%= yield %>
       <%= switch_user_select if Rails.env.development? %>
     </div>

@@ -13,6 +13,9 @@ nav.navbar.navbar-default
         span.icon-bar
       = link_to 'WhatsUp', root_path, class: 'navbar-brand'
     .collapse.navbar-collapse id='navbar-collapse'
+      ul.nav.navbar-nav
+        li = link_to 'Tasks', tasks_path
+
       ul.nav.navbar-nav.navbar-right
         - if signed_in?
           li.dropdown
