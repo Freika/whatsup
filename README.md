@@ -5,7 +5,6 @@
 - User can choose Team to send his Report
 - Task has Comments
 - Report has Comments
-- Task has several statuses(todo, done, backlog)
 - User should receive a Notification if he haven't sent his report in 30 minutes after beginning of work
 - Task has Tags
 - Comment has Tags
@@ -17,3 +16,5 @@
 # DONE
 
 - User belongs to Team
+- User can create tasks
+- Task has several statuses(todo, done, backlog)
