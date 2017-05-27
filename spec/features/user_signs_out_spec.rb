@@ -1,19 +1,15 @@
-feature 'Tasks' do
-  let(:user) { create(:user) }
+feature 'User signs out' do
+  scenario 'user signed in' do
+    user = create :user
 
-  scenario 'creating' do
     sign_in user
 
-    visit new_task_path
+    visit root_path
 
-    fill_in 'Content', with: 'Task description'
-    fill_in 'Estimated hours', with: 3
-    fill_in 'Spent hours', with: 2
+    click_link 'Sign out'
 
-    choose 'todo'
-
-    click_on 'Save'
-
-    expect(page).to have_content 'Task was successfully created.'
+    expect(page).to have_text 'Signed out successfully.'
+    expect(page).to have_no_link 'Sign out'
+    expect(page).to have_current_path root_path
   end
 end
