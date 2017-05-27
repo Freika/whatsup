@@ -17,7 +17,7 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = Task.new(task_params)
+    @task = current_user.tasks.build(task_params)
 
     if @task.save
       redirect_to @task, notice: 'Task was successfully created.'
@@ -46,6 +46,8 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    params.fetch(:task, {})
+    params.require(:task).permit(
+      :content, :status, :estimated_hours, :spent_hours
+    )
   end
 end
