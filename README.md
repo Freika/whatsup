@@ -1,7 +1,7 @@
 # TODO
 
-- User creates Tasks in the beginning of day
 - Tasks are belongs to Report
+- User creates Tasks in the beginning of day
 - User can choose Team to send his Report
 - Task has Comments
 - Report has Comments

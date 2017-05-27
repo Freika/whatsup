@@ -1,4 +1,6 @@
 class Task < ApplicationRecord
+  has_paper_trail
+
   belongs_to :user
 
   enum status: %i[todo done backlog]

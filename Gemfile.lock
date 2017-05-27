@@ -166,6 +166,9 @@ GEM
     nokogiri (1.7.2)
       mini_portile2 (~> 2.1.0)
     orm_adapter (0.5.0)
+    paper_trail (7.0.2)
+      activerecord (>= 4.0, < 5.2)
+      request_store (~> 1.1)
     parallel (1.11.2)
     parser (2.4.0.0)
       ast (~> 2.2)
@@ -226,6 +229,7 @@ GEM
       codeclimate-engine-rb (~> 0.4.0)
       parser (>= 2.4.0.0, < 2.5)
       rainbow (~> 2.0)
+    request_store (1.3.2)
     require_all (1.4.0)
     responders (2.4.0)
       actionpack (>= 4.2.0, < 5.3)
@@ -361,6 +365,7 @@ DEPENDENCIES
   launchy
   listen (>= 3.0.5, < 3.2)
   memory_profiler
+  paper_trail
   pg (~> 0.18)
   poltergeist (~> 1.12.0)
   puma (~> 3.7)

@@ -36,6 +36,8 @@ gem 'fast_stack'    # For Ruby MRI 2.0
 gem 'flamegraph'
 gem 'stackprof'     # For Ruby MRI 2.1+
 
+gem 'paper_trail'
+
 group :test do
   gem 'capybara', '~> 2.11.0'
   gem 'capybara-email', '~> 2.5.0'

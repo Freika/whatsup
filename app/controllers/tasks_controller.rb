@@ -3,7 +3,9 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   def index
-    @tasks = Task.all
+    @done_tasks = Task.done
+    @todo_tasks = Task.todo
+    @backlog_tasks = Task.backlog
   end
 
   def show
