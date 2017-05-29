@@ -20,7 +20,7 @@ class TasksController < ApplicationController
       load_tasks
 
       flash[:notice] = 'Task was successfully created.'
-      render :index
+      redirect_to tasks_path
     else
       render :new
     end
@@ -37,7 +37,7 @@ class TasksController < ApplicationController
       load_tasks
 
       flash[:notice] = 'Task was successfully updated.'
-      render :index
+      redirect_to tasks_path
     else
       render :edit
     end
@@ -48,7 +48,7 @@ class TasksController < ApplicationController
 
     @task.destroy
     flash[:notice] = 'Task was successfully destroyed.'
-    render :index
+    redirect_to tasks_path
   end
 
   private
