@@ -5,4 +5,5 @@ describe User, type: :model do
   it { should have_many :memberships }
   it { should have_many(:teams).through(:memberships) }
   it { should have_many :tasks }
+  it { should have_many :reports }
 end

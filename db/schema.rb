@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170529075556) do
+ActiveRecord::Schema.define(version: 20170529140406) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,15 @@ ActiveRecord::Schema.define(version: 20170529075556) do
     t.index ["user_id"], name: "index_memberships_on_user_id"
   end
 
+  create_table "reports", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "team_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["team_id"], name: "index_reports_on_team_id"
+    t.index ["user_id"], name: "index_reports_on_user_id"
+  end
+
   create_table "tasks", force: :cascade do |t|
     t.text "content"
     t.integer "user_id"
@@ -32,7 +41,9 @@ ActiveRecord::Schema.define(version: 20170529075556) do
     t.integer "spent_hours"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "report_id"
     t.index ["estimated_hours"], name: "index_tasks_on_estimated_hours"
+    t.index ["report_id"], name: "index_tasks_on_report_id"
     t.index ["spent_hours"], name: "index_tasks_on_spent_hours"
     t.index ["status"], name: "index_tasks_on_status"
     t.index ["user_id"], name: "index_tasks_on_user_id"

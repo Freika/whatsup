@@ -16,13 +16,14 @@ class TasksController < ApplicationController
   def create
     @task = current_user.tasks.build(task_params)
 
+    assign_report(@task)
     if @task.save
       load_tasks
 
       flash[:notice] = 'Task was successfully created.'
       redirect_to tasks_path
     else
-      render :new
+      redirect_to tasks_path, notice: 'Something went wrong.'
     end
   end
 
@@ -67,5 +68,19 @@ class TasksController < ApplicationController
     @done_tasks = Task.done
     @todo_tasks = Task.todo
     @backlog_tasks = Task.backlog
+  end
+
+  def assign_report(task)
+    report = Report.where(created_at: Date.current.all_day).first
+    today_report =
+      if report.present?
+        report
+      else
+        current_user.reports.create(team: Team.all.sample)
+      end
+
+    byebug
+
+    today_report.tasks << task
   end
 end
