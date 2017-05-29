@@ -1,18 +1,19 @@
 - tasks.each do |task|
-  .panel class=(klass)
-    .panel-body
-      .pull-left
-        = task.content
-      .pull-right
-        => task.estimated_hours
-        = "(#{task.spent_hours})"
-    .panel-footer
-      .pull-left
-        => link_to 'Edit', '#'
-        => link_to 'Destroy', task, data: { confirm: 'Are you sure?' }, method: :delete
+  div id=(dom_id(task))
+    .panel class=(klass)
+      .panel-body
+        .pull-left
+          = task.content
+        .pull-right
+          => task.estimated_hours
+          = "(#{task.spent_hours})"
+      .panel-footer
+        .pull-left
+          => link_to 'Edit', edit_task_path(task), remote: true
+          => link_to 'Destroy', task, data: { confirm: 'Are you sure?' }, method: :delete
 
-      .pull-right.text-muted
-        => task.user.username
-        = nice_date(task.created_at)
+        .pull-right.text-muted
+          => task.user.username
+          = nice_date(task.created_at)
 
-      .clearfix
+        .clearfix

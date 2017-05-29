@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :tasks, except: :edit
+  resources :tasks
 
   devise_for :users, controllers: {
     registrations: 'users/registrations'

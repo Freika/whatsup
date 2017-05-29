@@ -18,23 +18,37 @@ class TasksController < ApplicationController
 
     if @task.save
       load_tasks
+
+      flash[:notice] = 'Task was successfully created.'
       render :index
     else
       render :new
     end
   end
 
+  def edit
+    respond_to do |format|
+      format.js { render layout: false, content_type: 'text/javascript' }
+    end
+  end
+
   def update
     if @task.update(task_params)
-      redirect_to tasks_path, notice: 'Task was successfully updated.'
+      load_tasks
+
+      flash[:notice] = 'Task was successfully updated.'
+      render :index
     else
       render :edit
     end
   end
 
   def destroy
+    load_tasks
+
     @task.destroy
-    redirect_to tasks_path, notice: 'Task was successfully destroyed.'
+    flash[:notice] = 'Task was successfully destroyed.'
+    render :index
   end
 
   private

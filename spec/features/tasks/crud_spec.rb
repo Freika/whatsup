@@ -5,15 +5,17 @@ feature 'Task' do
   before(:each) { sign_in user }
 
   scenario 'creating' do
-    visit new_task_path
+    visit tasks_path
 
-    fill_in 'Content', with: 'Task description'
-    fill_in 'Estimated hours', with: 3
-    fill_in 'Spent hours', with: 2
+    within '#add_todo' do
+      fill_in 'Content', with: 'Task description'
+      fill_in 'Estimated hours', with: 3
+      fill_in 'Spent hours', with: 2
 
-    choose 'todo'
+      choose 'todo'
 
-    click_on 'Save'
+      click_on 'Save'
+    end
 
     expect(page).to have_content 'Task was successfully created.'
   end
@@ -28,7 +30,7 @@ feature 'Task' do
     expect(page).to have_text 'Task was successfully destroyed.'
   end
 
-  scenario 'updating' do
+  scenario 'updating', js: true do
     visit tasks_path
 
     click_on 'Edit'
