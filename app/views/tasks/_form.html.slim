@@ -1,27 +1,27 @@
-= form_for @task do |f|
-  - if @task.errors.any?
-    #error_explanation
-      h2 = "#{pluralize(@task.errors.count, "error")} prohibited this task from being saved:"
-      ul
-        - @task.errors.full_messages.each do |message|
-          li = message
+.panel.panel-default
+  .panel-body
+    = form_for task do |f|
+      .form-group
+        = f.label :content
+        br
+        = f.text_area :content, class: 'form-control'
 
-  = f.label :content
-  br
-  = f.text_area :content, class: 'form-control'
+      br
+      .form-group
+        = f.label :estimated_hours
+        .pull-right
+          = f.number_field :estimated_hours, class: 'form-control'
 
-  = f.label :estimated_hours
-  br
-  = f.number_field :estimated_hours, class: 'form-control'
+        = f.label :spent_hours
+        .pull-right
+          = f.number_field :spent_hours, class: 'form-control'
 
-  = f.label :spent_hours
-  br
-  = f.number_field :spent_hours, class: 'form-control'
-
-  - Task.statuses.keys.each do |status|
-    label>
-      => f.radio_button :status, status
-      => status.to_sym
-  br
-  .actions
-    = f.submit 'Save', class: 'btn btn-default'
+      br
+      .form-group
+        - Task.statuses.keys.each do |status|
+          label>
+            => f.radio_button :status, status
+            => status.to_sym
+      br
+      .actions
+        = f.submit 'Save', class: 'btn btn-default'

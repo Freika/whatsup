@@ -4,12 +4,15 @@
   .col-md-4
     h2 Done
     = render 'list', tasks: @done_tasks, klass: 'panel-success'
+    = render 'form', task: Task.new(status: :done)
 
   .col-md-4
     h2 Todo
     = render 'list', tasks: @todo_tasks, klass: 'panel-info'
+    = render 'form', task: Task.new(status: :todo)
 
   .col-md-4
     h2 Backlog
     = render 'list', tasks: @backlog_tasks, klass: 'panel-warning'
+    = render 'form', task: Task.new(status: :backlog)
 
