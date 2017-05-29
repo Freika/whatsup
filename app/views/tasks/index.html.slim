@@ -3,16 +3,43 @@
 .row
   .col-md-4
     h2 Done
+    a(
+      role="button"
+      data-toggle="collapse"
+      href="#add_done"
+      aria-expanded="false"
+      aria-controls="add_done"
+    )
+      | Add done task
     = render 'list', tasks: @done_tasks, klass: 'panel-success'
-    = render 'form', task: Task.new(status: :done)
+    #add_done.collapse
+      = render 'form', task: Task.new(status: :done)
 
   .col-md-4
     h2 Todo
+    a(
+      role="button"
+      data-toggle="collapse"
+      href="#add_todo"
+      aria-expanded="false"
+      aria-controls="add_todo"
+    )
+      | Add todo task
     = render 'list', tasks: @todo_tasks, klass: 'panel-info'
-    = render 'form', task: Task.new(status: :todo)
+    #add_todo.collapse
+      = render 'form', task: Task.new(status: :todo)
 
   .col-md-4
     h2 Backlog
+    a(
+      role="button"
+      data-toggle="collapse"
+      href="#add_backlog"
+      aria-expanded="false"
+      aria-controls="add_backlog"
+    )
+      | Add task to backlog
     = render 'list', tasks: @backlog_tasks, klass: 'panel-warning'
-    = render 'form', task: Task.new(status: :backlog)
+    #add_backlog.collapse
+      = render 'form', task: Task.new(status: :backlog)
 

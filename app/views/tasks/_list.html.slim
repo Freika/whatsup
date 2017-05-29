@@ -8,7 +8,7 @@
         = "(#{task.spent_hours})"
     .panel-footer
       .pull-left
-        => link_to 'Edit', edit_task_path(task)
+        => link_to 'Edit', '#'
         => link_to 'Destroy', task, data: { confirm: 'Are you sure?' }, method: :delete
 
       .pull-right.text-muted
