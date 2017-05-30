@@ -1,3 +1,16 @@
+- if @report.present?
+  .row
+    .col-md-12
+      = form_for :report, url: report_path(@report), method: :patch do |f|
+        p
+          ' This report belongs to
+        - Team.all.each do |team|
+          label>
+            => team.name
+            => check_box_tag 'report[team_ids][]', team.id, team_included?(@report, team)
+
+        = f.submit 'Save', class: 'btn btn-sm btn-default'
+
 .row
   .col-md-4
     h2 Done

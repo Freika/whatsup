@@ -65,18 +65,18 @@ class TasksController < ApplicationController
   end
 
   def load_tasks
-    @done_tasks = Task.done
-    @todo_tasks = Task.todo
-    @backlog_tasks = Task.backlog
+    @done_tasks = current_user.tasks.done
+    @todo_tasks = current_user.tasks.todo
+    @backlog_tasks = current_user.tasks.backlog
+    @report = current_user.reports.today.first
   end
 
   def assign_report(task)
-    report = Report.where(created_at: Date.current.all_day).first
     today_report =
-      if report.present?
-        report
+      if current_user.reports.today.present?
+        current_user.reports.today
       else
-        current_user.reports.create(team: Team.all.sample)
+        current_user.reports.create
       end
 
     today_report.tasks << task
