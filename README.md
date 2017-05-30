@@ -1,6 +1,5 @@
 # TODO
 
-- Tasks are belongs to Report
 - User creates Tasks in the beginning of day
 - User can choose Team to send his Report
 - Task has Comments
@@ -18,3 +17,4 @@
 - User belongs to Team
 - User can create tasks
 - Task has several statuses(todo, done, backlog)
+- Tasks are belongs to Report

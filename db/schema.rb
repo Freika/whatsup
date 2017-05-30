@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170529140406) do
+ActiveRecord::Schema.define(version: 20170530100458) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,10 +26,8 @@ ActiveRecord::Schema.define(version: 20170529140406) do
 
   create_table "reports", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "team_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["team_id"], name: "index_reports_on_team_id"
     t.index ["user_id"], name: "index_reports_on_user_id"
   end
 
@@ -47,6 +45,15 @@ ActiveRecord::Schema.define(version: 20170529140406) do
     t.index ["spent_hours"], name: "index_tasks_on_spent_hours"
     t.index ["status"], name: "index_tasks_on_status"
     t.index ["user_id"], name: "index_tasks_on_user_id"
+  end
+
+  create_table "team_reports", force: :cascade do |t|
+    t.integer "team_id"
+    t.integer "report_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["report_id"], name: "index_team_reports_on_report_id"
+    t.index ["team_id"], name: "index_team_reports_on_team_id"
   end
 
   create_table "teams", force: :cascade do |t|

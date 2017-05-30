@@ -1,6 +1,9 @@
 FactoryGirl.define do
   factory :report do
-    user_id 1
-    team_id 1
+    user
+
+    after(:create) do |report|
+      report.teams << FactoryGirl.create(:team)
+    end
   end
 end

@@ -79,8 +79,6 @@ class TasksController < ApplicationController
         current_user.reports.create(team: Team.all.sample)
       end
 
-    byebug
-
     today_report.tasks << task
   end
 end
