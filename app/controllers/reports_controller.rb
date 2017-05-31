@@ -1,6 +1,8 @@
 class ReportsController < ApplicationController
+  before_action :authenticate_user!
+
   def update
-    report = Report.find(params[:id])
+    report = current_user.reports.find(params[:id])
 
     report.teams.delete_all
     if params[:report]

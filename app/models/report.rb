@@ -1,5 +1,6 @@
 class Report < ApplicationRecord
   belongs_to :user
+  belongs_to :newsletter
   has_many :tasks
 
   has_many :team_reports
