@@ -72,11 +72,18 @@ class TasksController < ApplicationController
   end
 
   def assign_report(task)
+    newsletter =
+      if Newsletter.today.present?
+        Newsletter.today
+      else
+        Newsletter.create
+      end
+
     today_report =
       if current_user.reports.today.present?
         current_user.reports.today
       else
-        current_user.reports.create
+        current_user.reports.create(newsletter: newsletter)
       end
 
     today_report.tasks << task
