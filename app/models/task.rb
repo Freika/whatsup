@@ -4,6 +4,8 @@ class Task < ApplicationRecord
   belongs_to :user
   belongs_to :report
 
+  delegate :username, to: :user, prefix: true
+
   scope :today, -> { where(created_at: Date.current.all_day) }
 
   enum status: %i[todo done backlog]

@@ -13,7 +13,7 @@
           => link_to 'Destroy', task, data: { confirm: 'Are you sure?' }, method: :delete
 
         .pull-right.text-muted
-          => task.user.username
+          => task.user_username
           = nice_date(task.created_at)
 
         .clearfix

@@ -5,9 +5,7 @@ class ReportsController < ApplicationController
     report = current_user.reports.find(params[:id])
 
     report.teams.delete_all
-    if params[:report]
-      report.teams << Team.find(params[:report][:team_ids])
-    end
+    report.teams << Team.find(params[:report][:team_ids]) if params[:report]
 
     redirect_to tasks_path, notice: 'Report was successfully updated.'
   end

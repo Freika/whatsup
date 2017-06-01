@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_task, only: [:show, :edit, :update, :destroy]
+  before_action :set_task, only: %i[show edit update destroy]
 
   def index
     load_tasks
@@ -68,7 +68,7 @@ class TasksController < ApplicationController
     @done_tasks = current_user.tasks.done
     @todo_tasks = current_user.tasks.todo
     @backlog_tasks = current_user.tasks.backlog
-    @report = current_user.reports.today.first
+    @report = current_user.reports.today
   end
 
   def assign_report(task)
